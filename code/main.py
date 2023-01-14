@@ -27,6 +27,9 @@ def main():
                     print('✅ pass:', what)
     sys.exit(fails)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     eg('the', 'show settings', test_the)
+    eg('rand', 'generate, reset, regenerate same', test_rand)
+    eg('sym', 'check syms', test_sym)
+    eg('num', 'check nums', test_num)
     main()
