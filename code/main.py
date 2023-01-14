@@ -5,9 +5,31 @@ __version__ = "1.0.0"
 __license__ = "MIT"
 
 from utils import *
+from tests import *
 
 def main():
-    cli(settings(help))
+    saved,fails={},0
+    for k,v in cli(settings(help)).items():
+        the[k] = v
+        saved[k] = v
+    if the['help'] == True:
+        print(help)
+    else:
+        for what, fun in egs.items():
+            if the['go'] == 'all' or the['go'] == what:
+                for k,v in saved.items():
+                    the[k] = v
+                Seed = the['seed']
+                if egs[what]() == False:
+                    fails += 1
+                    print('❌ fail:', what)
+                else:
+                    print('✅ pass:', what)
+    sys.exit(fails)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    eg('the', 'show settings', test_the)
+    eg('rand', 'generate, reset, regenerate same', test_rand)
+    eg('sym', 'check syms', test_sym)
+    eg('num', 'check nums', test_num)
     main()
