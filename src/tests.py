@@ -13,7 +13,7 @@ def test_rand():
     Seed = the['seed']
     for i in range(1,10**3+1):
         num2.add(rand(0,1))
-    m1,m2 = rnd(num1.mid(),10), rnd(num2.mid(),10)
+    m1,m2 = rnd(num1.mid(),1), rnd(num2.mid(),1)
     return m1==m2 and .5 == rnd(m1,1)
 
 def test_sym():
