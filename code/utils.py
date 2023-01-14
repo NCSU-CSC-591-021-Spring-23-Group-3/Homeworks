@@ -14,28 +14,31 @@ help = '''USAGE:   python main.py [OPTIONS] [-g ACTION]
     -s  --seed  random number seed   = 937162211
     '''
 
-def settings(s):
-    return re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)",s)
+egs = {}
 
+Seed=937162211
+
+def settings(s):
+    return dict(re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)",s))
 
 def cli(options):
     args = sys.argv[1:]
-    # for k, v in options:
-    #     for n, x in enumerate(args):
-    #         if x.startswith('-'+k[0]) or x.startswith('--'+k[0]):
-    #             the[k] = True
-    #         elif not x.__contains__('-'):
-    #             the[args[n-1]]=x
-    # print(args)
-    # print(the)
-    for i in range(len(args)):
-        if args[i] == '--g' or args[i] ==  '--go':
-            the['go'] = args[i+1]
-        elif args[i] == '--s' or args[i] ==  '--seed':
-            the['seed'] = int(args[i+1])
-        elif args[i] == '--d' or args[i] ==  '--dump':
-            the['dump'] = True
-        elif args[i] == '--h' or args[i] ==  '--help':
-            print(help)
-        elif '-' in args[i]:
-            raise Exception('INVALID OPTION: ' + args[i] + '\n' + help)
+    for k, v in options.items():
+        for n, x in enumerate(args):
+            if x == '-'+k[0] or x == '--'+k:
+                if v == 'false':
+                    options[k] = True
+                elif v == 'true':
+                    options[k] = False
+                elif args[n+1].isdigit():
+                    options[k] = int(args[n+1])
+                elif '.' in args[n+1] and args[n+1].replace('.','').isdigit():
+                    options[k] = float(args[n+1])
+                else:
+                    options[k] = args[n+1]  
+    return options
+
+def eg(key, str, fun):
+    egs[key] = fun
+    global help
+    help = help + '  -g '+ key + '\t' + str + '\n'
