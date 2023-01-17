@@ -1,5 +1,6 @@
 from utils import *
 from num import NUM
+from sym import SYM
 
 def test_the():
     print(the.__repr__())
@@ -17,7 +18,10 @@ def test_rand():
     return m1==m2 and .5 == rnd(m1,1)
 
 def test_sym():
-    return True
+    sym = SYM()
+    for x in ["a","a","a","a","b","b","c"]:
+        sym.add(x)
+    return "a" == sym.mid() and 1.379 == rnd(sym.div())
 
 def test_num():
     num = NUM()
