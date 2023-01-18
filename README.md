@@ -5,7 +5,7 @@ CSC 591-021 Group-3 Homework Repo
 [![Collaborators](https://img.shields.io/badge/Collaborators-3-purple.svg?style=flat)](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/graphs/contributors)
 [![Language](https://img.shields.io/badge/Language-Python-orange.svg?style=flat)](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/search?l=python)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/blob/main/LICENSE)
-[![Tests](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/actions/workflows/lua-python-hws.yml/badge.svg)](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/actions/workflows/lua-python-hws.yml)
+[![Tests](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/actions/workflows/tests.yaml/badge.svg)](https://github.com/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/actions/workflows/tests.yaml)
 [![codecov](https://codecov.io/gh/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/branch/main/graph/badge.svg)](https://codecov.io/gh/NCSU-CSC-591-021-Spring-23-Group-3/Homeworks/branch/main)
 
 # About
