@@ -13,10 +13,11 @@ Homework repository for **CSC 591 021 Group-3**<br/>
 - HW1 - Conversion of <a href="https://github.com/timm/tested/blob/main/src/script.lua">script.lua</a> to Python, including the test cases. Automated workflows using GitHub Actions.
 
 # Steps to run
-1. Install Python 3.10.6
-2. cd into src folder of homework and run ```python main.py -g all```. Use ```--help``` option for a list of all options and change arguments likewise.
+- HW1:
+  1. Install Python 3.10.6
+  2. cd into src folder of homework and run ```python main.py -g all```. Use ```--help``` option for a list of all options and change arguments likewise.
 
 # Team Members
  - Kaushik Jadhav
- - Ajith Kumar Patchaimayil
+ - Ajith Kumar Vinayakamoorthy Patchaimayil
  - Sunandini Medisetti 
