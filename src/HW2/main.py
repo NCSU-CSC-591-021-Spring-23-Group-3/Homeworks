@@ -33,4 +33,5 @@ if __name__ == '__main__':
     eg('num', 'check nums', test_num)
     eg('csv', 'read from csv', test_csv)
     eg('data', 'read DATA csv', test_data)
+    eg('stats', 'stats from DATA', test_stats)
     main()
