@@ -24,5 +24,11 @@ class NUM:
     def mid(self):
         return self.mu
 
+    def div(self):
+        if (self.m2 < 0 or self.n < 2):
+            return 0
+        else:
+            return math.pow((self.m2 / (self.n - 1)),0.5)
+
 
 
