@@ -30,5 +30,9 @@ class NUM:
         else:
             return math.pow((self.m2 / (self.n - 1)),0.5)
 
-
+    def rnd(self,x,n):
+        if x == "?":
+            return x
+        else:
+            return rnd(x,n)
 
