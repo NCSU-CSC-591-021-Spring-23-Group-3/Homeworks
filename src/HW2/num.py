@@ -21,5 +21,8 @@ class NUM:
             self.lo = min(n, self.lo)
             self.hi = max(n, self.hi)
 
+    def mid(self):
+        return self.mu
+
 
 
