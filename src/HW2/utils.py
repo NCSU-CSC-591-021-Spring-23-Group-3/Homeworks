@@ -58,3 +58,11 @@ def csv(sFilename, fun):
     else:
         print("File path does not exist OR File not csv, given path: ", sFilename.absolute())
         return
+
+def kap(t, fun):
+    u = {}
+    for v in t:
+        k = t.index(v)
+        v, k = fun(k,v) 
+        u[k or len(u)] = v
+    return u
