@@ -19,3 +19,12 @@ class DATA:
             self.cols.add(t)
         else:
             self.cols=COLS(t)
+    
+    def stats(self, what, cols, nPlaces):
+        def fun(_, col):
+            if what == 'div':
+                val = col.div()
+            else:
+                val = col.mid()
+            return col.rnd(val, nPlaces),col.txt
+        return kap(cols or self.cols.y, fun)

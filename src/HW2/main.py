@@ -5,7 +5,7 @@ __version__ = "1.0.0"
 __license__ = "MIT"
 
 from utils import *
-from test_eg import *
+from test_hw2 import *
 
 def main():
     saved,fails={},0
