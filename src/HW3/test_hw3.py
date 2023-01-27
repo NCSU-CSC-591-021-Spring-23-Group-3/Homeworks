@@ -48,3 +48,19 @@ def test_stats():
         print(k, 'mid', data.stats('mid', cols, 2))
         print(' ', 'div', data.stats('div', cols, 2))
     return True
+
+def test_half():
+    data = DATA(the['file'])
+    left,right,A,B,mid,c = data.half() 
+    print(len(left),len(right),len(data.rows))
+    print(A.cells,c)
+    print(mid.cells) 
+    print(B.cells)
+
+def test_cluster():
+    data = DATA(the['file'])
+    show(data.cluster(),"mid",data.cols.y,1)
+
+def test_optimize():
+    data = DATA(the['file'])
+    show(data.sway(),'mid',data.cols.y,1)

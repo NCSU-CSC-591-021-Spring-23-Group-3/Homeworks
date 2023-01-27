@@ -29,11 +29,3 @@ class SYM:
 
     def rnd(self,x,n):
         return x
-    
-    def dist(self, s1, s2):
-        if s1=="?" and s2=="?":
-            return 1
-        elif s1 == s2:
-            return 0
-        else:
-            return 1
