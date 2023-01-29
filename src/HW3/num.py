@@ -29,3 +29,16 @@ class NUM:
             return 0
         else:
             return math.sqrt(self.m2 / (self.n - 1))
+
+    def rnd(self, x, n):
+        if x == "?":
+            return x
+        else:
+            return rnd(x, n)
+
+    def norm(self, n):
+        return n if n == "?" else (n - self.lo) / (self.hi - self.lo + 1e-32)
+
+
+
+
