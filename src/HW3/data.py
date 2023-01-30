@@ -71,7 +71,7 @@ class DATA:
         min  = min or len(rows)**the['min']
         cols = cols or self.cols.x
         node = { 'data' : self.clone(rows) }
-        if len(rows) > 2*min:
+        if len(rows) >= 2*min:
             left, right, node['A'], node['B'], node['mid'], _ = self.half(rows,cols,above)
             node['left']  = self.cluster(left,  min, cols, node['A'])
             node['right'] = self.cluster(right, min, cols, node['B'])
