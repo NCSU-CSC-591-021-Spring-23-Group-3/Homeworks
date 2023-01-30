@@ -31,13 +31,16 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Unit tests
       run: |
+        coverage erase
         cd src/HW1
-        ls
-        coverage run -m main -g all
+        coverage run -a -m main -g all
         cd ../HW2
-        ls
-        coverage run -m main -g all --file ../../etc/data/auto93.csv 
+        coverage run -a -m main -g all --file ../../etc/data/auto93.csv 
+        cd ../HW3
+        coverage run -a -m main -g all --file ../../etc/data/auto93.csv
         coverage report
         coverage html
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v2
+      with:
+        files: /home/runner/work/Homeworks/Homeworks/src/HW3/htmlcov/index.html
