@@ -50,3 +50,24 @@ class DATA:
     def furthest(self, row1, rows = None, cols = None):
         t=self.around(row1,rows,cols)
         return t[len(t) - 1]
+
+    def sway(self, rows=None, min=None, cols=None, above=None):
+        rows = rows or self.rows
+        min = min or len(rows) ** the['min']
+        cols = cols or self.cols.x
+        node = {'data': self.clone(rows)}
+        if len(rows) > 2 * min:
+            left, right, node['A'], node['B'], node['mid'], _ = self.half(rows, cols, above)
+            if self.better(node['B'], node['A']):
+                left, right, node['A'], node['B'] = right, left, node['B'], node['A']
+            node['left'] = self.sway(left, min, cols, node['A'])
+        return node
+
+    def better(self, row1, row2):
+        s1, s2, ys = 0, 0, self.cols.y
+        for col in ys:
+            x = col.norm(row1.cells[col.at])
+            y = col.norm(row2.cells[col.at])
+            s1 = s1 - math.exp(col.w * (x - y) / len(ys))
+            s2 = s2 - math.exp(col.w * (y - x) / len(ys))
+        return s1 / len(ys) < s2 / len(ys)
