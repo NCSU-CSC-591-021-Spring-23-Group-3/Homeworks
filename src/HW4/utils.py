@@ -148,3 +148,10 @@ def transpose(t):
             u[i].append(t[j][i])
     return u
 
+def repgrid(sFile, DATA):
+    t = dofile(sFile)
+    rows = repRows(t, DATA, transpose(t['cols']))
+    cols = repCols(t['cols'], DATA)
+    show(rows.cluster(),"mid",rows.cols.all,1)
+    show(cols.cluster(),"mid",cols.cols.all,1)
+    repPlace(rows)
