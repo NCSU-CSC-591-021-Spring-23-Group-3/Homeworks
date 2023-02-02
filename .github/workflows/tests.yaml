@@ -38,6 +38,8 @@ jobs:
         coverage run -a -m main -g all --file ../../etc/data/auto93.csv 
         cd ../HW3
         coverage run -a -m main -g all --file ../../etc/data/auto93.csv
+        cd ../HW4
+        coverage run -a -m main -g all --file ../../etc/data/repgrid1.csv
         coverage report
         coverage html
     - name: Upload Coverage to Codecov
