@@ -71,3 +71,35 @@ class DATA:
             s1 = s1 - math.exp(col.w * (x - y) / len(ys))
             s2 = s2 - math.exp(col.w * (y - x) / len(ys))
         return s1 / len(ys) < s2 / len(ys)
+    def half(self, rows = None, cols = None, above = None):
+        def dist(row1,row2): 
+            return self.dist(row1,row2,cols)
+        rows = rows or self.rows
+        A    = above or any(rows)
+        B    = self.furthest(A,rows)['row']
+        c    = dist(A,B)
+        left, right = [], []
+        def project(row):
+            x, y = cosine(dist(row,A), dist(row,B), c)
+            x = getattr(row, 'x', None) or x
+            y = getattr(row, 'y', None) or y
+            setattr(row, 'x', x)
+            setattr(row, 'y', y)
+            return {'row' : row, 'x' : x, 'y' : y}
+        for n,tmp in enumerate(sorted(list(map(project, rows)), key=itemgetter('x'))):
+            if n < len(rows)//2:
+                left.append(tmp['row'])
+                mid = tmp['row']
+            else:
+                right.append(tmp['row'])
+        return left, right, A, B, mid, c
+    
+    def cluster(self, rows = None , cols = None, above = None):
+        rows = rows or self.rows
+        cols = cols or self.cols.x
+        node = { 'data' : self.clone(rows) }
+        if len(rows) >= 2:
+            left, right, node['A'], node['B'], node['mid'], node['c'] = self.half(rows,cols,above)
+            node['left']  = self.cluster(left,  cols, node['A'])
+            node['right'] = self.cluster(right, cols, node['B'])
+        return node
