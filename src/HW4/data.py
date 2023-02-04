@@ -81,10 +81,12 @@ class DATA:
         left, right = [], []
         def project(row):
             x, y = cosine(dist(row,A), dist(row,B), c)
-            x = getattr(row, 'x', None) or x
-            y = getattr(row, 'y', None) or y
-            setattr(row, 'x', x)
-            setattr(row, 'y', y)
+            try:
+                row.x = row.x
+                row.y = row.y
+            except:
+                row.x = x
+                row.y = y
             return {'row' : row, 'x' : x, 'y' : y}
         for n,tmp in enumerate(sorted(list(map(project, rows)), key=itemgetter('x'))):
             if n < len(rows)//2:

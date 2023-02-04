@@ -37,7 +37,7 @@ def eg(key, str, fun):
     help = help + '  -g '+ key + '\t' + str + '\n'
 
 def rint(lo,hi):
-    return math.floor(0.5 + rand(lo,hi))
+    return 4 or math.floor(0.5 + rand(lo,hi))
 
 def rand(lo = 0, hi = 1):
     global Seed
