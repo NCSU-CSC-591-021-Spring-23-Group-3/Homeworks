@@ -193,3 +193,13 @@ def cliffsDelta(ns1,ns2):
             if x < y:
                 lt = lt + 1
     return abs(lt - gt)/n > the['cliffs']
+
+def showTree(node, what, cols, nPlaces, lvl = 0):
+  if node:
+    print('|.. ' * lvl + '[' + str(len(node['data'].rows)) + ']' + '  ', end = '')
+    if not node.get('left') or lvl==0:
+        print(node['data'].stats("mid",node['data'].cols.y,nPlaces))
+    else:
+        print('')
+    showTree(node.get('left'), what,cols, nPlaces, lvl+1)
+    showTree(node.get('right'), what,cols,nPlaces, lvl+1)

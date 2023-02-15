@@ -42,6 +42,7 @@ if __name__ == '__main__':
     eg('cliffs', 'start tests', test_cliffs)
     eg('dist', 'distance test', test_dist)
     eg('half', 'divide data in half', test_half)
+    eg('tree', 'make snd show tree of clusters', test_tree)
     # eg('num', 'check nums', test_num)
     # eg('repcols', 'checking repcols', test_repCols)
     # eg('synonyms','checking repcols cluster', test_synonyms)

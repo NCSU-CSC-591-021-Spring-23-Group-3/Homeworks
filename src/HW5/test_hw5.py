@@ -102,6 +102,11 @@ def test_half():
     print(B.cells)
     print("l",l.stats('mid', l.cols.y, 2))
     print("r",r.stats('mid', r.cols.y, 2))
+
+def test_tree():
+    data = DATA(the['file'])
+    showTree(data.tree(),"mid",data.cols.y,1)
+
 # def test_copy():
 #   t1 = {'a' : 1, 'b' : { 'c' : 2, 'd' : [3]}}
 #   t2 = deepcopy(t1)
