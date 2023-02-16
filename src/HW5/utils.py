@@ -175,3 +175,25 @@ def merge(col1,col2):
     new.lo = min(col1.lo, col2.lo)
     new.hi = max(col1.hi, col2.hi) 
   return new
+
+def RANGE(at,txt,lo,hi=None):
+    return {'at':at,'txt':txt,'lo':lo,'hi':lo or hi or lo,'y':SYM()}
+
+def extend(range,n,s):
+    range['lo'] = min(n, range['lo'])
+    range['hi'] = max(n, range['hi'])
+    range['y'].add(s)
+
+def itself(x):
+    return x
+
+def value(has,nB = None, nR = None, sGoal = None):
+    sGoal,nB,nR = sGoal or True, nB or 1, nR or 1
+    b,r = 0,0
+    for x,n in has.items():
+        if x==sGoal:
+            b = b + n
+        else:
+            r = r + n
+    b,r = b/(nB+1/float("inf")), r/(nR+1/float("inf"))
+    return b**2/(b+r)
