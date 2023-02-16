@@ -20,6 +20,7 @@ def main():
                 for k,v in saved.items():
                     the[k] = v
                 Seed = the['seed']
+                print('▶️ ',what,("-")*(60))
                 if egs[what]() == False:
                     n += 1
                     print('❌ fail:', what)
@@ -43,11 +44,6 @@ if __name__ == '__main__':
     eg('dist', 'distance test', test_dist)
     eg('half', 'divide data in half', test_half)
     eg('tree', 'make snd show tree of clusters', test_tree)
-    # eg('num', 'check nums', test_num)
-    # eg('repcols', 'checking repcols', test_repCols)
-    # eg('synonyms','checking repcols cluster', test_synonyms)
-    # eg('reprows','checking reprows', test_repRows)
-    # eg('prototypes','checking reprows cluster', test_prototypes)
-    # eg('position','where\'s wally', test_position)
-    # eg('every','the whole enchilada', test_every)
+    eg('sway', 'optimizing', test_sway)
+    eg('bins', 'find deltas between best and rest', test_bins)
     main()
