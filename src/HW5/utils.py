@@ -204,3 +204,23 @@ def merge2(col1,col2):
   if new.div() <= (col1.div()*col1.n + col2.div()*col2.n)/new.n:
     return new
 
+def mergeAny(ranges0):
+    def noGaps(t):
+        for j in range(1,len(t)):
+            t[j]['lo'] = t[j-1]['hi']
+        t[0]['lo']  = float("-inf")
+        t[len(t)-1]['hi'] =  float("inf")
+        return t
+
+    ranges1,j = [],0
+    while j <= len(ranges0)-1:
+        left = ranges0[j]
+        right = None if j == len(ranges0)-1 else ranges0[j+1]
+        if right:
+            y = merge2(left['y'], right['y'])
+            if y:
+                j = j+1
+                left['hi'], left['y'] = right['hi'], y
+        ranges1.append(left)
+        j = j+1
+    return noGaps(ranges0) if len(ranges0)==len(ranges1) else mergeAny(ranges1)
