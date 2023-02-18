@@ -197,3 +197,10 @@ def value(has,nB = None, nR = None, sGoal = None):
             r = r + n
     b,r = b/(nB+1/float("inf")), r/(nR+1/float("inf"))
     return b**2/(b+r)
+
+
+def merge2(col1,col2):
+  new = merge(col1,col2)
+  if new.div() <= (col1.div()*col1.n + col2.div()*col2.n)/new.n:
+    return new
+
