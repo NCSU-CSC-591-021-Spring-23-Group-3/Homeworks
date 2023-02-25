@@ -17,7 +17,7 @@ Homework repository for **CSC 591 021 Group-3**<br/>
 - HW5 - Conversion of <a href="https://github.com/timm/tested/blob/main/src/grid.lua">bins.lua</a> to Bins
 
 # Steps to run
-- HW 1,2,3,4,5:
+- HW 1,2,3,4,5,6:
   1. Install Python 3.10.6
   2. cd into src folder of homework and run ```python main.py -g all```. Use ```--help``` option for a list of all options and change arguments likewise.
 
