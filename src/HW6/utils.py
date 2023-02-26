@@ -244,3 +244,13 @@ def firstN(sortedRanges,scoreFun):
         if tmp and tmp > most:
             out,most = rule,tmp
     return out,most
+
+def prune(rule, maxSize):
+    n=0
+    for txt,ranges in rule.items():
+        n = n+1
+        if len(ranges) == maxSize[txt]:
+            n=n+1
+            rule[txt] = None
+    if n > 0:
+        return rule
