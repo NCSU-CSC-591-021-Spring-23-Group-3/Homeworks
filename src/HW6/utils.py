@@ -225,3 +225,22 @@ def mergeAny(ranges0):
         ranges1.append(left)
         j = j+1
     return noGaps(ranges0) if len(ranges0)==len(ranges1) else mergeAny(ranges1)
+def firstN(sortedRanges,scoreFun):
+    print("")
+    def function(r):
+        print(r['range']['txt'],r['range']['lo'],r['range']['hi'],rnd(r['val']),r['range']['y'].has)
+    _ = list(map(function, sortedRanges))
+    print()
+    first = sortedRanges[0]['val']
+    def useful(range):
+        if range['val']>.05 and range['val']> first/10:
+            return range
+    sortedRanges = [x for x in sortedRanges if useful(x)]
+    most,out = -1, -1
+    for n in range(1,len(sortedRanges)+1):
+        slice = sortedRanges[0:n]
+        slice_range = [x['range'] for x in slice]
+        tmp,rule = scoreFun(slice_range)
+        if tmp and tmp > most:
+            out,most = rule,tmp
+    return out,most

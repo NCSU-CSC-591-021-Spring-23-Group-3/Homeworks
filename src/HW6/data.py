@@ -164,3 +164,6 @@ class DATA:
                 tmp.append({'range':range, 'max':len(ranges),'val': v(range['y'].has)})
         rule,most=firstN(sorted(tmp, key=itemgetter('val')),score)
         return rule,most
+    def betters(self,n):
+        tmp=sorted(self.rows, key=lambda row: self.better(row, self.rows[self.rows.index(row)-1]))
+        return  n and tmp[0:n], tmp[n+1:]  or tmp
