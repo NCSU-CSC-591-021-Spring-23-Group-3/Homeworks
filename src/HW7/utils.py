@@ -89,6 +89,36 @@ def cliffsDelta(ns1,ns2):
                 lt = lt + 1
     return abs(lt - gt)/n <= the['cliff']
 
+def delta(i, other):
+  e, y, z= 1E-32, i, other
+  return abs(y.mu - z.mu) / ((e + y.sd**2/y.n + z.sd**2/z.n)**.5)
+
+def bootstrap(y0,z0, NUM):
+    x, y, z, yhat, zhat = NUM(), NUM(), NUM(), [], []
+    for y1 in y0:
+        x.add(y1)
+        y.add(y1)
+    for z1 in z0:
+        x.add(z1)
+        z.add(z1)
+    xmu, ymu, zmu = x.mu, y.mu, z.mu
+    for y1 in y0:
+        yhat.append(y1 - ymu + xmu)
+    for z1 in z0:
+       zhat.append(z1 - zmu + xmu)
+    tobs = delta(y,z)
+    n = 0
+    for _ in range(1,the['bootstrap']+1):
+        i = NUM()
+        other = NUM()
+        for y in samples(yhat).values():
+            i.add(y)
+        for z in samples(zhat).values():
+            other.add(z)
+        if delta(i, other) > tobs:
+            n = n + 1
+    return n / the['bootstrap'] >= the['conf']
+
 def RX(t,s): 
     t = sorted(t)
     return {'name' : s or "", 'rank':0, 'n':len(t), 'show':"", 'has':t}
