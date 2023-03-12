@@ -74,6 +74,29 @@ def firstN(sortedRanges,scoreFun):
             out,most = rule,tmp
     return out,most
 
+def prune(rule, maxSize):
+    n = 0
+    for txt, ranges in rule.items():
+        n = n + 1
+        if len(ranges) == maxSize[txt]:
+            n = n + 1
+            rule[txt] = None
+    if n > 0:
+        return rule
+
+
+def samples(t, n=None):
+    u = {}
+    for i in range(1, (n or len(t)) + 1):
+        u[i] = t[random.randint(0, len(t) - 1)]
+    return u
+
+
+def gaussian(mu, sd):
+    mu, sd = mu or 0, sd or 1
+    sq, pi, log, cos, r = math.sqrt, math.pi, math.log, math.cos, random.random
+    return mu + sd * sq(-2 * log(r())) * cos(2 * pi * r())
+
 def cliffsDelta(ns1,ns2):
     if len(ns1) > 128:
         ns1 = samples(ns1,128)
